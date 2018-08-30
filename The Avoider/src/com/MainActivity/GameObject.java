@@ -17,31 +17,32 @@ public abstract class GameObject {
 	public abstract void tick();
 	public abstract void render(Graphics g);
 	
-	public boolean isIn() {
-		if (x<0 && y<0) {
-			x=0;
-			y=0;
-			return false;
-		} else if (x>Game.WIDTH - 33 && y> Game.HEIGHT - 54) {
-			x = Game.WIDTH - 33;
-			y = Game.HEIGHT- 54;
-			return false;
-			
-		} else if (x<0) {
-			x=0;
-			return false;
-		} else if (y<0) {
-			y=0;
-			return false;
-		} else if (x>Game.WIDTH - 33){
-			x=Game.WIDTH - 33;
-			return false;
-		} else if (y>Game.HEIGHT - 54){
-			y=Game.HEIGHT- 54;
-			return false;
-		} else
-			return true;
-	}
+//	public boolean isIn() {
+//		if (x<0 && y<0) {
+//			x=0;
+//			y=0;
+//			return false;
+//		} else if (x>Game.WIDTH - 33 && y> Game.HEIGHT - 54) {
+//			x = Game.WIDTH - 33;
+//			y = Game.HEIGHT- 54;
+//			return false;
+//		} else if (x<0) {
+//			x=0;
+//			return false;
+//		} else if (y<0) {
+//			y=0;
+//			return false;
+//		} else if (x>Game.WIDTH - 33){
+//			x=Game.WIDTH - 33 -1;
+//			return false;
+//		} else if (y>Game.HEIGHT - 54){
+//			y=Game.HEIGHT- 54 -1;
+//			return false;
+//		} else if (x>=0 && y>=0 && x<=Game.WIDTH - 33 && y<= Game.HEIGHT - 54) {
+//			return true;
+//		} else
+//		return false;
+//	}
 	
 	public void setX(int x) {
 		this.x = x;

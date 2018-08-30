@@ -22,7 +22,7 @@ public class Game extends Canvas implements Runnable {
 		
 		handler = new Handler();
 		
-		handler.addObj(new Player(1, 1, ID.Player));
+		handler.addObj(new Player(100, 100, ID.Player));
 	}
 	
 	public synchronized void start() {
