@@ -14,12 +14,15 @@ public class Player extends GameObject {
 	}
 	
 	public void tick() {		
+//	PointerInfo a = MouseInfo.getPointerInfo();
+//	Point b = a.getLocation();
+//	x = (int) b.getX()-420;
+//	y = (int) b.getY()-290;
 	}
 	
 	public void render(Graphics g) {
 		g.setColor(Color.white);
 		g.fillRect(x, y, 32, 32);
-
 	}
 	
 
