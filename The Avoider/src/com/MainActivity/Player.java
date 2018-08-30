@@ -2,17 +2,24 @@ package com.MainActivity;
 
 import java.awt.Color;
 import java.awt.Graphics;
+import java.awt.MouseInfo;
+import java.awt.Point;
+import java.awt.PointerInfo;
 
 public class Player extends GameObject {
 
 	public Player(int x, int y, ID id) {
+		
 		super(x, y, id);
-		// TODO Auto-generated constructor stub
 	}
 	
 	public void tick() {
-		// TODO Auto-generated method stub
-		
+		PointerInfo a = MouseInfo.getPointerInfo();
+		Point b = a.getLocation();
+		if (this.isIn()) {
+		x = (int) b.getX()-420;
+		y = (int) b.getY()-290;
+		}
 	}
 	
 	public void render(Graphics g) {

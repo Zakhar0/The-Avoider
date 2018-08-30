@@ -11,7 +11,7 @@ public class Game extends Canvas implements Runnable {
 
 	private static final long serialVersionUID = -3192454351902361511L;
 	
-	public final static int WIDTH = 640, HEIGHT = WIDTH/12*9;
+	public final static int WIDTH = 640, HEIGHT = 400;
 	private Thread thread;
 	private boolean running = false;
 	
@@ -22,7 +22,7 @@ public class Game extends Canvas implements Runnable {
 		
 		handler = new Handler();
 		
-		handler.addObj(new Player(100, 100, ID.Player));
+		handler.addObj(new Player(1, 1, ID.Player));
 	}
 	
 	public synchronized void start() {
