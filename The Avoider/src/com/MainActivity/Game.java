@@ -25,7 +25,7 @@ public class Game extends Canvas implements Runnable {
 		
 		handler = new Handler();
 		
-		handler.addObj(new Player(100, 100, ID.Player));
+		handler.addObj(new Player(100, 100, ID.Player, handler));
 		handler.addObj(new Obstcl(300, 1, ID.Obstcl));
 	}
 	
