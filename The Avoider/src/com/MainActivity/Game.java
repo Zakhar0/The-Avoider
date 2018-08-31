@@ -14,15 +14,19 @@ public class Game extends Canvas implements Runnable {
 	public final static int WIDTH = 640, HEIGHT = 400;
 	private Thread thread;
 	private boolean running = false;
+	private HUD hud;
 	
 	private Handler handler;
 	
 	public Game() {
 		new Window(WIDTH, HEIGHT, "The Avoider", this);
 		
+		hud = new HUD();
+		
 		handler = new Handler();
 		
 		handler.addObj(new Player(100, 100, ID.Player));
+		handler.addObj(new Obstcl(300, 1, ID.Obstcl));
 	}
 	
 	public synchronized void start() {
@@ -41,7 +45,7 @@ public class Game extends Canvas implements Runnable {
 	public void run() {
 		long lastTime = System.nanoTime();
 		double amountOfTicks = 60.0;
-		double ns = 10000000 / amountOfTicks;
+		double ns = 1000000000 / amountOfTicks;
 		double delta = 0;
 		long timer = System.currentTimeMillis();
 		int frames = 0;
@@ -68,6 +72,7 @@ public class Game extends Canvas implements Runnable {
 	
 	private void tick() {
 		handler.tick();
+		hud.tick();
 	}
 	
 	private void render() {
@@ -83,10 +88,21 @@ public class Game extends Canvas implements Runnable {
 		g.fillRect(0,0, WIDTH, HEIGHT);
 		
 		handler.render(g);
+		hud.render(g);
 		
 		g.dispose();
 		bs.show();
 		
+	}
+	
+	public static int clamp(int var, int min, int max) {
+		if (var>max) {
+			return var = max;
+		}if (var<min) {
+			return var = min;
+		}
+			else
+				return var;
 	}
 	
 	public static void main(String[] args) {

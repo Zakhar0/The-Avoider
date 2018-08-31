@@ -5,6 +5,7 @@ import java.awt.Graphics;
 import java.awt.MouseInfo;
 import java.awt.Point;
 import java.awt.PointerInfo;
+import java.awt.Rectangle;
 
 public class Player extends GameObject {
 	
@@ -19,48 +20,25 @@ public class Player extends GameObject {
 		Point b = a.getLocation();
 		this.mx = (int) b.getX()-420;
 		this.my = (int) b.getY()-290;
-		if (mx>0 && my>0 && mx <Game.WIDTH - 33 && my< Game.HEIGHT - 54) {
-			setX(mx);
-			setY(my);
-		} else
-		this.keepIn();
 	}
 	
-	@Override
-	public void keepIn(){
-		
-		if (mx<0 && my<0) {
-			setX(0);
-			setY(0);
-		} else if (mx> Game.WIDTH - 33 && my> Game.HEIGHT - 54) {
-			setX(Game.WIDTH - 33);
-			setY(Game.HEIGHT - 54);
-			
-		} else if (mx<0 && my <= Game.HEIGHT - 54) {
-			setX(0);
-			setY(my);
-			
-		} else if (my<0 && mx< Game.WIDTH - 33) {
-			setY(0);
-			setX(mx);
-			
-		} else if (mx>Game.WIDTH - 33 && my>0){
-			setX(Game.WIDTH - 33);
-			setY(my);
-			
-		} else if (my>Game.HEIGHT - 54 && mx>0){
-			setY(Game.HEIGHT - 54);
-			setX(mx);
-		}
-	}
+	
 	
 	public void tick() {
-			followMouse();
+		followMouse();
+		
+		x = Game.clamp(mx, 0, Game.WIDTH-33);
+		y = Game.clamp(my, 0, Game.HEIGHT-54);
+			
 	}
 	
 	public void render(Graphics g) {
 		g.setColor(Color.white);
 		g.fillRect(x, y, 32, 32);
+	}
+
+	public Rectangle getBounds() {
+		return null;
 	}
 	
 
