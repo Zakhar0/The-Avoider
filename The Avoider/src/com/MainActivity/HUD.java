@@ -13,7 +13,7 @@ public class HUD {
 	
 	public void render(Graphics g) {
 		g.setColor(Color.blue);
-		g.drawString(Integer.toString(SCORE), 400, 20);
+		g.drawString(Integer.toString(SCORE), 550, 20);
 	}
 
 }

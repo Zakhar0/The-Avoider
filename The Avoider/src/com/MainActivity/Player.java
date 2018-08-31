@@ -2,6 +2,7 @@ package com.MainActivity;
 
 import java.awt.Color;
 import java.awt.Graphics;
+import java.awt.Graphics2D;
 import java.awt.MouseInfo;
 import java.awt.Point;
 import java.awt.PointerInfo;
@@ -33,12 +34,15 @@ public class Player extends GameObject {
 	}
 	
 	public void render(Graphics g) {
+		Graphics2D g2d = (Graphics2D) g;
+		
+		
 		g.setColor(Color.white);
-		g.fillRect(x, y, 32, 32);
+		g2d.draw(getBounds());
 	}
 
 	public Rectangle getBounds() {
-		return null;
+		return new Rectangle(x,y,32,32);
 	}
 	
 
