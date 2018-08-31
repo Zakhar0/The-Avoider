@@ -22,7 +22,7 @@ public class Obstcl extends GameObject{
 	}
 
 	public Rectangle getBounds() {
-		return null;
+		return new Rectangle(x,y,10,10);
 	}
 
 }

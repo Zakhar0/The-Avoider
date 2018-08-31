@@ -32,7 +32,7 @@ public class Player extends GameObject {
 		x = Game.clamp(mx, 0, Game.WIDTH-33);
 		y = Game.clamp(my, 0, Game.HEIGHT-54);
 	
-//		collision();
+		collision();
 	}
 	
 	private void collision() {
@@ -42,10 +42,11 @@ public class Player extends GameObject {
 			if(tempObj.getId() == ID.Obstcl) {
 				if(getBounds().intersects(tempObj.getBounds())) {
 					//collision code
+					HUD.LIVES--;
 				}
 			}
 		}
-	}
+ 	}
 	
 	public void render(Graphics g) {
 		g.setColor(Color.white);
