@@ -44,6 +44,29 @@ public abstract class GameObject {
 //		return false;
 //	}
 	
+	public void keepIn() {
+	if (getX()<0 && getY()<0) {
+		setX(0);
+		setY(0);
+		
+	} else if (getX()>Game.WIDTH - 33 && getY()> Game.HEIGHT - 54) {
+		setX(Game.WIDTH - 33);
+		setY(Game.HEIGHT - 54);
+		
+	} else if (getX()<0) {
+		setX(0);
+		
+	} else if (getY()<0) {
+		setY(0);
+		
+	} else if (getX()>Game.WIDTH - 33){
+		setX(Game.WIDTH - 33);
+		
+	} else if (getY()>Game.HEIGHT - 54){
+		setY(Game.HEIGHT - 54);
+	}
+	}
+	
 	public void setX(int x) {
 		this.x = x;
 		
