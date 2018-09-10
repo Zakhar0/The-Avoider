@@ -17,16 +17,32 @@ public class Game extends Canvas implements Runnable {
 	private HUD hud;
 	
 	private Handler handler;
+	private Menu menu;
+	 
+	public enum STATE {
+		 Menu,
+		 Game
+	 };
+	 
+	public STATE gameState= STATE.Menu;
 	
 	public Game() {
+		
+		handler = new Handler();
+		menu = new Menu(this, handler);
+		this.addMouseListener(menu);
+		
 		new Window(WIDTH, HEIGHT, "The Avoider", this);
+		
 		
 		hud = new HUD();
 		
-		handler = new Handler();
+
 		
+		if (gameState == STATE.Game) {
 		handler.addObj(new Player(100, 100, ID.Player, handler));
 		handler.addObj(new Obstcl(300, 1, ID.Obstcl));
+		}
 	}
 	
 	public synchronized void start() {
@@ -73,7 +89,12 @@ public class Game extends Canvas implements Runnable {
 	
 	private void tick() {
 		handler.tick();
-		hud.tick();
+		if (gameState == STATE.Game) {
+			hud.tick();
+		}else if (gameState == STATE.Menu){
+			menu.tick();
+		}
+		
 	}
 	
 	private void render() {
@@ -83,13 +104,20 @@ public class Game extends Canvas implements Runnable {
 			return;
 		}
 		
+		
 		Graphics g = bs.getDrawGraphics();
 		
 		g.setColor(Color.black);
 		g.fillRect(0,0, WIDTH, HEIGHT);
 		
 		handler.render(g);
-		hud.render(g);
+		
+		
+		if (gameState == STATE.Game) {
+			hud.render(g);
+		} else if (gameState == STATE.Menu){
+			menu.render(g);
+		}
 		
 		g.dispose();
 		bs.show();

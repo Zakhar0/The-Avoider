@@ -13,7 +13,8 @@ public class Obstcl extends GameObject{
 	}
 
 	public void tick() {
-		
+		vy=1;
+		y+=vy;
 	}
 	public void render(Graphics g) {
 		g.setColor(Color.red);
